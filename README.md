@@ -2,6 +2,8 @@
 
 <div align="center">
 
+<a href="https://www.youtube.com/@praxtify"><img src="docs/kapak.jpg" alt="MuJoCo Quickstart — install MuJoCo with one command · Praxtify" width="100%"></a>
+
 ### 🇬🇧 [English](#en) &nbsp;·&nbsp; 🇹🇷 [Türkçe](#tr) &nbsp;·&nbsp; 🇩🇪 [Deutsch](#de)
 
 </div>
@@ -27,6 +29,10 @@ Windows, macOS and Linux.
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 </div>
+
+<p align="center">
+  <img src="docs/simulasyon.gif" alt="A cube falls and a ball bounces in the first MuJoCo simulation" width="720">
+</p>
 
 ## Quick start
 
@@ -108,6 +114,10 @@ Windows, macOS ve Linux.
 
 </div>
 
+<p align="center">
+  <img src="docs/simulasyon.gif" alt="İlk MuJoCo simülasyonu: küp düşüyor, top sekiyor" width="720">
+</p>
+
 ## Hızlı başlangıç
 
 **Windows** — PowerShell'i (ya da VS Code terminalini) aç ve yapıştır:
@@ -187,6 +197,10 @@ VS Code'da: `Ctrl+Shift+P` → **Python: Select Interpreter** → `.venv`'i seç
 Windows, macOS und Linux.
 
 </div>
+
+<p align="center">
+  <img src="docs/simulasyon.gif" alt="Erste MuJoCo-Simulation: Ein Würfel fällt, ein Ball springt" width="720">
+</p>
 
 ## Schnellstart
 

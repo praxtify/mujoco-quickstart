@@ -74,7 +74,7 @@ function Install-MujocoQuickstart {
     Write-Step 1 'Python'
     $python = Find-Python
     if (-not $python) {
-        Write-Host '      Python not found - installing Python 3.13 with winget...'
+        Write-Host '      installing Python 3.13 (winget)...'
         if (-not (Install-WithWinget 'Python.Python.3.13')) {
             Write-Fail 'winget is not available. Install Python 3.13 from https://www.python.org/downloads/ (tick "Add python.exe to PATH") and run this script again.'
             return
@@ -90,7 +90,7 @@ function Install-MujocoQuickstart {
     if ($useCode) {
         $code = Find-Code
         if (-not $code) {
-            Write-Host '      VS Code not found - installing with winget...'
+            Write-Host '      installing VS Code (winget)...'
             if (Install-WithWinget 'Microsoft.VisualStudioCode') { $code = Find-Code }
         }
         if ($code) { Write-Ok 'VS Code found' } else { Write-Host '      VS Code not found - skipping (install it from https://code.visualstudio.com).' -ForegroundColor Yellow }
@@ -138,7 +138,7 @@ function Install-MujocoQuickstart {
     if ($env:MUJOCO_NO_RUN -eq '1') {
         Write-Host '      skipped (MUJOCO_NO_RUN=1)'
     } else {
-        Write-Host '      Starting the simulation - close the MuJoCo window to finish.'
+        Write-Host '      Starting MuJoCo - close its window to finish.'
         Push-Location $dir
         try { & $venvPy $hello } finally { Pop-Location }
     }

@@ -18,6 +18,7 @@ REPO_RAW="https://raw.githubusercontent.com/praxtify/mujoco-quickstart/main"
 PY_PKG_VERSION="3.13.7"
 DIR="${MUJOCO_DIR:-$HOME/mujoco-quickstart}"
 OS="$(uname -s)"
+OS_ADI="$OS"; [ "$OS" = "Darwin" ] && OS_ADI="macOS"
 
 step() { printf '\n\033[36m[%s/6] %s\033[0m\n' "$1" "$2"; }
 ok()   { printf '      \033[32mOK\033[0m  %s\n' "$1"; }
@@ -46,7 +47,7 @@ find_code() {
     return 1
 }
 
-printf '\n  MuJoCo quickstart (%s)  -  praxtify.com\n  Project folder: %s\n' "$OS" "$DIR"
+printf '\n  MuJoCo quickstart (%s)  -  praxtify.com\n  Project folder: %s\n' "$OS_ADI" "$DIR"
 
 # 1 - Python
 step 1 "Python"
@@ -54,10 +55,10 @@ PYTHON="$(find_python)"
 if [ -z "$PYTHON" ]; then
     if [ "$OS" = "Darwin" ]; then
         if command -v brew >/dev/null 2>&1; then
-            info "Python not found - installing python@3.13 with Homebrew..."
+            info "installing python@3.13 (Homebrew)..."
             brew install python@3.13 || fail "brew install python@3.13 failed."
         else
-            info "Python not found - installing Python $PY_PKG_VERSION from python.org (asks for your password)..."
+            info "installing Python $PY_PKG_VERSION (python.org)..."
             PKG="/tmp/python-$PY_PKG_VERSION.pkg"
             curl -fL -o "$PKG" "https://www.python.org/ftp/python/$PY_PKG_VERSION/python-$PY_PKG_VERSION-macos11.pkg" \
                 || fail "Download failed. Install Python from https://www.python.org/downloads/ and run this again."
@@ -76,7 +77,7 @@ CODE=""
 if [ "${MUJOCO_NO_CODE:-0}" != "1" ]; then
     CODE="$(find_code)"
     if [ -z "$CODE" ] && [ "$OS" = "Darwin" ]; then
-        info "VS Code not found - installing..."
+        info "installing VS Code..."
         if command -v brew >/dev/null 2>&1; then
             brew install --cask visual-studio-code
         else
@@ -136,7 +137,7 @@ step 6 "Run"
 if [ "${MUJOCO_NO_RUN:-0}" = "1" ]; then
     info "skipped (MUJOCO_NO_RUN=1)"
 else
-    info "Starting the simulation - close the MuJoCo window to finish."
+    info "Starting MuJoCo - close its window to finish."
     (cd "$DIR" && "$VENV_PY" hello_mujoco.py)
 fi
 
